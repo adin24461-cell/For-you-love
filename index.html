@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="my">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>For You ❤️</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow: hidden;
+    }
+    
+    .box {
+      width: 90%;
+      max-width: 420px;
+      padding: 35px 25px;
+      text-align: center;
+      background: rgba(255, 255, 255, .95);
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
+    }
+    
+    h1 {
+      color: #ff4f81;
+      font-size: 28px;
+    }
+    
+    p {
+      color: #555;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    
+    button {
+      border: 0;
+      padding: 13px 28px;
+      margin: 10px;
+      border-radius: 30px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+    
+    .yes {
+      background: #ff4f81;
+      color: white;
+    }
+    
+    .no {
+      background: #eee;
+      color: #555;
+      position: relative;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 25px;
+      animation: float 5s linear forwards;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <!-- PAGE 1 -->
+  <div class="box" id="page1">
+    
+    <h1>ဟေး... ❤️</h1>
+    
+    <p>
+      မင်းအတွက် Surprise လေးတစ်ခု<br>
+      ကိုယ်လုပ်ထားတယ် 🥺💕<br><br>
+      
+      ကြည့်ချင်လား?
+    </p>
+    
+    <button class="yes" onclick="yesClick()">
+      YES ❤️
+    </button>
+    
+    <button class="no" id="noBtn" onclick="noClick()">
+      NO 🙈
+    </button>
+    
+  </div>
+  
+  
+  <!-- PAGE 2 -->
+  <div class="box hidden" id="page2">
+    
+    <h1>အင်း... 🥺❤️</h1>
+    
+    <p>
+      မင်း YES နှိပ်လိုက်ပြီဆိုတော့<br>
+      ကိုယ်ပြောချင်တာလေး ပြောမယ်နော်... 💕
+    </p>
+    
+    <button class="yes" onclick="nextPage()">
+      ဆက်ကြည့်မယ် 💕
+    </button>
+    
+  </div>
+  
+  
+  <!-- PAGE 3 -->
+  <div class="box hidden" id="page3">
+    
+    <h1>မင်းအတွက် 💌</h1>
+    
+    <p>
+      ကိုယ်က မင်းကို ပျော်နေတာလေးပဲ<br>
+      အမြဲမြင်ချင်တယ် ❤️<br><br>
+      
+      မင်းစိတ်ညစ်တဲ့အချိန်မှာလည်း<br>
+      ကိုယ်က မင်းဘေးမှာရှိချင်တယ် 🫶<br><br>
+      
+      အနာဂတ်ဘယ်လိုဖြစ်မလဲ မသိပေမယ့်<br>
+      မင်းနဲ့အတူတူ လျှောက်ချင်တယ် ❤️
+    </p>
+    
+    <button class="yes" onclick="finalPage()">
+      နောက်ဆုံး Surprise 🎁
+    </button>
+    
+  </div>
+  
+  
+  <!-- PAGE 4 -->
+  <div class="box hidden" id="page4">
+    
+    <h1>❤️ Surprise ❤️</h1>
+    
+    <p>
+      မင်းကို အရမ်းချစ်တယ် 🥺❤️<br><br>
+      
+      ဒီ Website လေးက သေးသေးလေးပဲဖြစ်ပေမယ့်<br>
+      မင်းပြုံးသွားရင် ကိုယ့်အတွက်တော့<br>
+      အရမ်းတန်ပါတယ် 💕
+    </p>
+    
+    <h2 style="color:#ff4f81">
+      I LOVE YOU ❤️
+    </h2>
+    
+  </div>
+  
+  
+  <script>
+    function yesClick() {
+      
+      document.getElementById("page1")
+        .classList.add("hidden");
+      
+      document.getElementById("page2")
+        .classList.remove("hidden");
+      
+      hearts();
+    }
+    
+    
+    function nextPage() {
+      
+      document.getElementById("page2")
+        .classList.add("hidden");
+      
+      document.getElementById("page3")
+        .classList.remove("hidden");
+      
+      hearts();
+    }
+    
+    
+    function finalPage() {
+      
+      document.getElementById("page3")
+        .classList.add("hidden");
+      
+      document.getElementById("page4")
+        .classList.remove("hidden");
+      
+      hearts();
+    }
+    
+    
+    function noClick() {
+      
+      const btn = document.getElementById("noBtn");
+      
+      const maxX = window.innerWidth - btn.offsetWidth - 20;
+      const maxY = window.innerHeight - btn.offsetHeight - 20;
+      
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      
+      btn.style.position = "fixed";
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+      
+    }
+    
+    
+    function hearts() {
+      
+      for (let i = 0; i < 15; i++) {
+        
+        const heart = document.createElement("div");
+        
+        heart.className = "heart";
+        
+        heart.innerHTML = "❤️";
+        
+        heart.style.left =
+          Math.random() * 100 + "vw";
+        
+        heart.style.animationDuration =
+          (3 + Math.random() * 3) + "s";
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+        
+      }
+      
+    }
+  </script>
+  
+</body>
+
+</html>
